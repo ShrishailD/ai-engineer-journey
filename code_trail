@@ -1,0 +1,60 @@
+
+
+trxns = [{"id" : 1, "amount" : 500}, {"id" : 2, "amount" : 1200}, {"id": 3 , "amount": 300}]
+
+first = trxns[0]
+second = trxns[1]
+third = trxns[2]
+
+print(first["amount"])
+print(second["amount"])
+print(third["amount"])
+
+def total_txns(trxns) :
+  running = 0
+  for t in trxns:
+    running = running + t["amount"]
+
+  return running
+
+
+print(total_txns(trxns))
+
+def biggest_txn(trxns) :
+  if len(trxns) == 0:
+    return None
+  biggest = trxns[0]["amount"]
+  for t in trxns:
+    if t["amount"] > biggest:
+      biggest = t["amount"]
+
+  return biggest
+
+print(biggest_txn(trxns))
+
+def count_txns(trxns):
+  count = 0
+  for t in trxns:
+    count = count + 1
+
+  return count
+
+print(count_txns(trxns))
+
+
+def average_txn(trxns):
+    if count_txns(trxns) == 0:
+        return 0
+    return total_txns(trxns) / count_txns(trxns)
+
+print(average_txn(trxns))
+
+def large_txns(trxns, max_amnt):
+  large = []  
+  for t in trxns:
+    if t["amount"] > max_amnt:
+      large.append(t["id"])
+
+  return large
+
+print(large_txns(trxns, 800))
